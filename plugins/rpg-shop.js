@@ -1,28 +1,28 @@
 const items = {
     buy: {
         limit: {
-            exp: 999
+            exp: 30000
         },
         potion: {
-            money: 1250
+            money: 2000
         },
         aqua: {
            money: 500
         },
         trash: {
-            money: 40
+            money: 50
         },
         wood: {
-            money: 700
+            money: 3000
         },
         rock: {
-            money: 850
+            money: 2500
         },
         string: {
-            money: 400
+            money: 500
         },
         iron: { 
-        	money: 3000
+        	money: 30000
         },
         diamond: {
             money: 500000
@@ -37,10 +37,10 @@ const items = {
             money: 1500
         },
         common: {
-            money: 200
+            money: 10000
         },
         uncommon: {
-            money: 2000
+            money: 20000
         },
         mythic: {
             money: 25000
@@ -201,10 +201,10 @@ const items = {
     },
     sell: {
         limit: {
-            exp: 999
+            exp: 25000
         },
         potion: {
-            money: 1250
+            money: 1500
         },
         aqua: {
            money: 500
@@ -213,16 +213,16 @@ const items = {
             money: 40
         },
         wood: {
-            money: 700
+            money: 2500
         },
         rock: {
-            money: 850
+            money: 2000
         },
         string: {
-            money: 400
+            money: 500
         },
         iron: { 
-        	money: 3000
+        	money: 25000
         },
         diamond: {
             money: 250000
@@ -237,10 +237,10 @@ const items = {
             money: 1500
         },
         common: {
-            money: 200
+            money: 5000
         },
         uncommon: {
-            money: 2000
+            money: 10000
         },
         mythic: {
             money: 25000
@@ -466,9 +466,9 @@ ${usedPrefix}${command} potion 10
     if (command.toLowerCase() == 'buy') {
         let paymentMethod = Object.keys(listItems[item]).find(v => v in user)
         if (user[paymentMethod] < listItems[item][paymentMethod] * total) return conn.sendButton(m.chat,
-`*–『 INSUFFICIENT CREDIT 』–*`, 
-`ʏᴏᴜ ɴᴇᴇᴅ ᴇxᴛʀᴀ *${(listItems[item][paymentMethod] * total) - user[paymentMethod]}* ${global.rpg.emoticon(paymentMethod)}${paymentMethod} ᴛᴏ ʙᴜʏ *${total}* ${global.rpg.emoticon(item)}${item}.
-ʏᴏᴜ'ᴠᴇ *${user[paymentMethod]}* ${global.rpg.emoticon(paymentMethod)}${paymentMethod} ɪɴ ʙᴀɢ.
+`*–『 GAGAL 』–*`, 
+`Kamu harus mempunyai *${(listItems[item][paymentMethod] * total) - user[paymentMethod]}* ${global.rpg.emoticon(paymentMethod)}${paymentMethod} untuk membeli *${total}* ${global.rpg.emoticon(item)}${item}.
+kamu mempunyai *${user[paymentMethod]}* ${global.rpg.emoticon(paymentMethod)}${paymentMethod} di tas.
 –––––––––––––––––––––––––
 💁🏻‍♂ ᴛɪᴩ :
 ᴏᴩᴇɴ ᴄʀᴀᴛᴇs & ᴄᴏʟʟᴇᴄᴛ ʀᴇᴡᴀʀᴅs.
@@ -485,7 +485,7 @@ ${usedPrefix}transfer ${paymentMethod} ${(listItems[item][paymentMethod] * total
         user[item] += total
         return conn.sendButton(m.chat,
 `*${htki} BOUGHT ${htka}*`,
-`ʏᴏᴜ *ʙᴏᴜɢʜᴛ ${total} ${global.rpg.emoticon(item)}${item}*.
+`kamu *membeli ${total} ${global.rpg.emoticon(item)}${item}*.
 `.trim(), imgr + 'bought', [
 [`ɪɴᴠᴇɴᴛᴏʀʏ`, `${usedPrefix}inventory`]
 ], m)
